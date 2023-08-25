@@ -14,7 +14,7 @@ var readline = require('readline');
 var entradaDeDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-});
+})
 
 entradaDeDados.question('Digite o primero valor: ', function(numero1){
     let valor1 = numero1.replace(',','.')
