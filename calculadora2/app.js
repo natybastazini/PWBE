@@ -4,6 +4,8 @@
  * Autor: Natalia Bastazini.
  * Versao: 1.0
  ************************************************************/
+//Import da biblioteca
+var calculosMatematicos = require('./modulo/calculosMatematicos.js')
 
 //Import da biblioteca de entrada de dados.
 var readline = require('readline');
@@ -37,30 +39,33 @@ entradaDeDados.question('Digite o primero valor: ', function(numero1){
                 valor1 = Number(valor1)
                 valor2 = Number(valor2)
 
-                //Validação do tipo de operação matemática.
-                if (operacao == 'SOMAR'){
-                    resultado = valor1 + valor2
-                }else if (operacao == 'SUBTRAIR'){
-                    resultado = valor1 - valor2
-                }else if (operacao == 'MULTIPLICAR'){
-                    resultado = valor1 * valor2
-                }else if (operacao == 'DIVIDIR'){
-                    //Validação da entrada de dados 0 no valor 2.
-                    if (valor2 == 0)
-                        console.log('ERRO: Não é possível realizar uma divisão por 0!!')
-                    else 
-                        resultado = valor1 / valor2
+                // //Validação do tipo de operação matemática.
+                // if (operacao == 'SOMAR'){
+                //     resultado = valor1 + valor2
+                // }else if (operacao == 'SUBTRAIR'){
+                //     resultado = valor1 - valor2
+                // }else if (operacao == 'MULTIPLICAR'){
+                //     resultado = valor1 * valor2
+                // }else if (operacao == 'DIVIDIR'){
+                //     //Validação da entrada de dados 0 no valor 2.
+                //     if (valor2 == 0)
+                //         console.log('ERRO: Não é possível realizar uma divisão por 0!!')
+                //     else 
+                //         resultado = valor1 / valor2
 
-                //Validação para operações matemáticas inválidas.    
-                }else
-                    console.log('ERRO: É obrigatório escolher apenar as operações listadas.')
+                // //Validação para operações matemáticas inválidas.    
+                // }else
+                //     console.log('ERRO: É obrigatório escolher apenas as operações listadas.')
 
-                    
-                if(resultado != undefined)
+                resultado = calculosMatematicos.calculadora(valor1, valor2, operacao)
+
+                //Validação da variável undelfined.    
+                if(resultado)
                     console.log(resultado)
 
             }
         })
     })
 })
+
 
