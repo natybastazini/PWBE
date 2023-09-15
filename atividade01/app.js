@@ -5,7 +5,11 @@
  * Versao: 1.0
  ************************************************************/
 
+var calculoImc = require('./modulo/calculoIMC')
+
 var entradaDeDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
+
+    
 })
