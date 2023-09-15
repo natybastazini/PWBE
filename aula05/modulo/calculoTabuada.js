@@ -31,7 +31,7 @@ const calcularTabuada = function(valorTabuada, contadorInicial, contadorFinal){
     if (tabuada == '' || contInicial == '' || contFinal == '')
         console.log('ERRO: É obrigatório a entrada de todos os valores!!')
     else if (isNaN(tabuada) || isNaN(contInicial) || isNaN(contFinal))
-        console.log('ERRO: É obrigatório a entrada somente de números')
+        console.log('ERRO: É obrigatório a entrada somente de números!!')
     else{
         //Converte as variáveis em número.
         contInicial = Number(contInicial)
