@@ -49,8 +49,8 @@ return verificar
 
 }
 
-console.log(calcularImc('1.60', '54') )
-console.log(verificarImc(21))
+// console.log(calcularImc('1.60', '54') )
+// console.log(verificarImc(21))
 
 module.exports = {
     calcularImc, verificarImc
