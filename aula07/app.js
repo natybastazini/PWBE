@@ -57,9 +57,10 @@ app.use((request, response, next) => {
 
 app.get('/estados/sigla', cors(), async function (request, response, next){
 
-    let controleListaEstados = require('./modulo/manipulando_array_json')
+    let controleListaEstados = require('./modulo/manipulando_array_json.js')
+    let estados = controleListaEstados.getListaDeEstados()
 
-    response.json('{teste: "API funcionando"}')
+    response.json(estados)
     response.status(200)
 })
 
