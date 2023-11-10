@@ -5,7 +5,7 @@
  * Versao: 1.0
  **********************************************************************/
 
-var estados_cidades = require('./modulo/estados_cidades.js')
+var estados_cidades = require('./estados_cidades.js')
 
 const getListaDeEstados = () =>{
 
@@ -89,31 +89,69 @@ const getEstadosRegiao = (regiao) =>{
 
 // console.log(getEstadosRegiao('Sudeste'))
 
-const getCapitalPais = () =>{
+const getCapitalPais = function () {
 
-    let estadosCidades = estados_cidades.estadosCidades.estados
-    ARRAYcapitais = []
+    const estados = estados_cidades.estadosCidades.estados
 
-    estadosCidades.forEach( function(estados){
+    let informacoesCapitaisPais = {}
+    let listaCapitais = []
 
-        if(estados.includes())
-        {
-            let JSONestados = {}
-            JSONestados.capital_atual = estados.capital_pais.capital
-            JSONestados.uf = estados.sigla
-            JSONestados.descricao = estados.nome
-            JSONestados.capital = estados.capital
-            JSONestados.regiao = estados.regiao
-            JSONestados.capital_pais_ano_inicio = estados.capital_pais_ano_inicio
-            JSONestados.capital_pais_ano_termino = estados.capital_pais_ano_termino
+    estados.forEach(function (estado) {
+        if (estado.capital_pais !== undefined) {
+            let infoEstado = {
+                capital_atual: estado.capital_pais.capital,
+                uf: estado.sigla,
+                descricao: estado.nome,
+                capital: estado.capital,
+                regiao: estado.regiao,
+                ano_inicio_capital_pais: estado.capital_pais.ano_inicio,
+                ano_termino_capital_pais: estado.capital_pais.ano_fim
+            }
 
-
-            ARRAYestados.push(JSONcapital)   
+            listaCapitais.push(infoEstado)
         }
-
-        return ARRAYestados
-
     })
+
+    informacoesCapitaisPais.capitais = listaCapitais
+    
+    return informacoesCapitaisPais
 }
 
-console.log(getCapitalPais())
+// console.log(getCapitalPais())
+
+const getCidades = function(siglaEstado){
+
+    let estados = estados_cidades.estadosCidades.estados
+
+    let uf = siglaEstado.toUpperCase()
+
+    let estadoCidades = {}
+    let cidades = []
+
+    estados.forEach(function(estado){
+        if(estado.sigla.toUpperCase().includes(uf)){
+            estadoCidades.uf = estado.sigla
+            estadoCidades.descricao = estado.nome
+            estadoCidades.quantidade_cidades = estado.cidades.length
+
+            estado.cidades.forEach(function(cidade) {
+                cidades.push(cidade.nome)
+            })
+        }
+    })
+
+    estadoCidades.cidades = cidades
+    console.log(estadoCidades)
+    return estadoCidades
+}
+
+// console.log(getCidades('SP'))
+
+module.exports = {
+    getListaDeEstados,
+    getDadosEstado,
+    getCapitalEstado,
+    getEstadosRegiao,
+    getCapitalPais,
+    getCidades
+}
